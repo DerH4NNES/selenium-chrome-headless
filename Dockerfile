@@ -94,7 +94,6 @@ COPY chrome_launcher.sh /opt/google/chrome/google-chrome
 
 RUN chown -R headless:headless /opt/selenium
 
-USER headless
 # Fixes https://github.com/SeleniumHQ/docker-selenium/issues/87
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
