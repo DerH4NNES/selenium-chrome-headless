@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qqy \
   && apt-get -qqy install \
-       wget curl \
+       libgconf2-4 wget curl \
        ca-certificates apt-transport-https \
        ttf-wqy-zenhei \
        fonts-thai-tlwg-ttf \
