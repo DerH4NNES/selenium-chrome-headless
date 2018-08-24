@@ -15,16 +15,12 @@ RUN apt-get update -qqy \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #===========
-# OpenJDK 8
+# OpenJRE 8
 #===========
-RUN mkdir -p /usr/share/man/man1 \
-  && echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list.d/jessie-backports.list \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    -t jessie-backports openjdk-8-jre-headless \
-    unzip \
-    wget \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+RUN apt install --target-release jessie-backports \
+          openjdk-8-jre-headless \
+          ca-certificates-java \
+          --assume-yes
 
 #==============
 # ChromeDriver
