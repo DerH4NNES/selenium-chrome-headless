@@ -20,9 +20,8 @@ RUN apt-get update -qqy \
 ARG CHROME_VERSION="google-chrome-stable"
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get update -qqy \
-  && apt-get -qqy install \
-    ${CHROME_VERSION} \
+  && apt-get update -y \
+  && apt-get -y install ${CHROME_VERSION} \
 
 #===================
 # Add user headless
