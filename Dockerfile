@@ -17,14 +17,12 @@ RUN apt-get update -qqy \
 #===============
 # Google Chrome
 #===============
-ARG CHROME_VERSION="google-chrome-beta"
+ARG CHROME_VERSION="google-chrome-stable"
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
   && apt-get update -qqy \
   && apt-get -qqy install \
-    ${CHROME_VERSION:-google-chrome-stable} \
-  && rm /etc/apt/sources.list.d/google-chrome.list \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+    ${CHROME_VERSION} \
 
 #===================
 # Add user headless
@@ -86,11 +84,6 @@ ENV NODE_APPLICATION_NAME "drs_robot"
 COPY generate_config /opt/selenium/generate_config
 RUN chmod +x /opt/selenium/generate_config
 RUN /opt/selenium/generate_config > /opt/selenium/config.json
-
-#=================================
-# Chrome launch script modication
-#=================================
-COPY chrome_launcher.sh /opt/google/chrome/google-chrome
 
 RUN chown -R headless:headless /opt/selenium
 
