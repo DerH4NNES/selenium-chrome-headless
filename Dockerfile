@@ -47,7 +47,7 @@ RUN mkdir -p /usr/share/man/man1 \
 # Selenium
 #==========
 RUN  mkdir -p /opt/selenium \
-  && wget --no-verbose http://selenium-release.storage.googleapis.com/3.7/selenium-server-standalone-3.7.1.jar \
+  && wget --no-verbose http://selenium-release.storage.googleapis.com/3.14/selenium-server-standalone-3.14.0.jar \
     -O /opt/selenium/selenium-server-standalone.jar
 
 #==============
